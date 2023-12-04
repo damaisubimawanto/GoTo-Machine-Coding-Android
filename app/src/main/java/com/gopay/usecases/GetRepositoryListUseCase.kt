@@ -1,6 +1,5 @@
 package com.gopay.usecases
 
-import com.gopay.data.responses.RepositoryResponse
 import com.gopay.domain.models.RepositoryModel
 import com.gopay.domain.repositories.HomeRepository
 import com.gopay.network.Resource
