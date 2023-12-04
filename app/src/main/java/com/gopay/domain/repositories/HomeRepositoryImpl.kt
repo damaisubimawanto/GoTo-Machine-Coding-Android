@@ -1,33 +1,40 @@
 package com.gopay.domain.repositories
 
 import com.gopay.data.services.HomeService
+import com.gopay.dispatcher.CoroutineDispatcherProvider
 import com.gopay.domain.models.RepositoryModel
+import com.gopay.network.NetworkResource
 import com.gopay.network.Resource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 
 /**
  * Created by damai007 on 04/December/2023
  */
 class HomeRepositoryImpl(
-    private val homeService: HomeService
+    private val homeService: HomeService,
+    private val dispatcherProvider: CoroutineDispatcherProvider
 ) : HomeRepository {
 
     override suspend fun getRepositoryList(): Flow<Resource<List<RepositoryModel>>> {
-        // TODO: getLocalDatabase()
-        return try {
-            val response = homeService.getRepositoryList()
-            if (response.isSuccessful) {
-                val responseListModel = response.body()?.map {
-                    it.convertToDataModel()
-                }
-                // TODO: saveToLocalDatabase()
-                flowOf(Resource.Success(responseListModel))
-            } else {
-                flowOf(Resource.Error(errorMessage = response.errorBody()?.toString()))
+        return object : NetworkResource<List<RepositoryModel>>(
+            dispatcherProvider = dispatcherProvider
+        ) {
+            override suspend fun remoteFetch(): List<RepositoryModel> {
+                val response = homeService.getRepositoryList()
+                return if (response.isSuccessful) {
+                    response.body()?.map {
+                        it.convertToDataModel()
+                    } ?: listOf()
+                } else listOf()
             }
-        } catch (e: Exception) {
-            flowOf(Resource.Error(errorMessage = e.message))
-        }
+
+            override suspend fun localFetch(): List<RepositoryModel>? {
+                return super.localFetch()
+            }
+
+            override suspend fun saveLocal(data: List<RepositoryModel>) {
+                super.saveLocal(data)
+            }
+        }.asFlow()
     }
 }

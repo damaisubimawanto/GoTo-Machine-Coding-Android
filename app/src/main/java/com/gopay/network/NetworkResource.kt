@@ -4,7 +4,6 @@ import com.gopay.dispatcher.CoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.withContext
 
 /**
@@ -15,8 +14,10 @@ abstract class NetworkResource<T>(
 ) {
 
     fun asFlow(): Flow<Resource<T>> = flow {
-
-        suspend fun fetchFromRemote(): Flow<Resource<T>> {
+        val localCache = withContext(dispatcherProvider.io) {
+            localFetch()
+        }
+        if (localCache == null) {
             val remoteResponse = safeApiCall(dispatcherProvider = dispatcherProvider.io) {
                 remoteFetch()
             }
@@ -28,21 +29,9 @@ abstract class NetworkResource<T>(
                 }
                 is Resource.Error -> Unit
             }
-            return flowOf(remoteResponse)
-        }
-
-        if (shouldFetchFromRemote()) {
-            fetchFromRemote()
+            emit(remoteResponse)
         } else {
-            /* Get from cache. */
-            val localCache = withContext(dispatcherProvider.io) {
-                localFetch()
-            }
-            if (localCache == null) {
-                fetchFromRemote()
-            } else {
-                emit(Resource.Success(data = localCache))
-            }
+            emit(Resource.Success(data = localCache))
         }
     }
 
@@ -51,8 +40,6 @@ abstract class NetworkResource<T>(
     open suspend fun localFetch(): T? = null
 
     open suspend fun saveLocal(data: T) {}
-
-    open fun shouldFetchFromRemote() = true
 
 }
 
