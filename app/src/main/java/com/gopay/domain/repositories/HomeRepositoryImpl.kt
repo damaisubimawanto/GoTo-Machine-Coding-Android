@@ -4,7 +4,6 @@ import com.gopay.data.services.HomeService
 import com.gopay.domain.models.RepositoryModel
 import com.gopay.network.Resource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
 /**
@@ -16,16 +15,19 @@ class HomeRepositoryImpl(
 
     override suspend fun getRepositoryList(): Flow<Resource<List<RepositoryModel>>> {
         // TODO: getLocalDatabase()
-        val response = try {
-            Resource.Success(
-                homeService.getRepositoryList().map {
-                    it.map()
+        return try {
+            val response = homeService.getRepositoryList()
+            if (response.isSuccessful) {
+                val responseListModel = response.body()?.map {
+                    it.convertToDataModel()
                 }
-            )
+                // TODO: saveToLocalDatabase()
+                flowOf(Resource.Success(responseListModel))
+            } else {
+                flowOf(Resource.Error(errorMessage = response.errorBody()?.toString()))
+            }
         } catch (e: Exception) {
-            Resource.Error(errorMessage = e.message)
+            flowOf(Resource.Error(errorMessage = e.message))
         }
-        // TODO: saveToLocalDatabase()
-        return flowOf(response)
     }
 }

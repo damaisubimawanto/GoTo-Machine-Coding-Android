@@ -4,8 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.gopay.extensions.isGone
-import com.gopay.extensions.visible
+import androidx.core.view.isVisible
 import com.gopay.customviews.FullScreenViewType.LoadingView
 import com.gopay.customviews.FullScreenViewType.ErrorView
 import com.gopay.databinding.FullScreenViewBinding
@@ -28,47 +27,23 @@ class FullScreenView @JvmOverloads constructor(
         )
     }
 
-    fun show(type: FullScreenViewType) {
+    fun showOrHide(
+        type: FullScreenViewType,
+        isShowing: Boolean
+    ) {
         with(binding) {
             when(type) {
                 LoadingView -> {
-                    if(loader.isGone()){
-                        loader.visible()
-                    }
+                    loader.isVisible = isShowing
                 }
                 ErrorView -> {
-                    if(loader.isVisible()){
+                    if (loader.isVisible()) {
                         loader.gone()
                     }
-                    if(errorView.isGone()){
-                        errorView.visible()
-                    }
-                    if(errorText.isGone()){
-                        errorText.visible()
-                    }
+                    errorView.isVisible = isShowing
+                    errorText.isVisible = isShowing
                 }
             }
         }
     }
-
-    fun hide(type: FullScreenViewType) {
-        with(binding) {
-            when(type) {
-                LoadingView -> {
-                    if(loader.isVisible()){
-                        loader.gone()
-                    }
-                }
-                ErrorView -> {
-                    if(errorView.isVisible()){
-                        errorView.gone()
-                    }
-                    if(errorText.isVisible()){
-                        errorText.gone()
-                    }
-                }
-            }
-        }
-    }
-
 }

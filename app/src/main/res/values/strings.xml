@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">GoPay</string>
+    <string name="trending_text">Trending</string>
     <string name="cannot_connect_to_internet">Could not connect to the internet</string>
     <string name="something_went_wrong">OOPS!! Something went wrong..</string>
+
+    <string name="menu_sorted_by_watcher">Sort by Watchers</string>
+    <string name="menu_sorted_by_forks">Sort by Forks</string>
 
 </resources>

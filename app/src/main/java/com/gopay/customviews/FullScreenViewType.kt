@@ -1,6 +1,6 @@
 package com.gopay.customviews
 
 sealed class FullScreenViewType {
-    object LoadingView: FullScreenViewType()
-    object ErrorView: FullScreenViewType()
+    data object LoadingView: FullScreenViewType()
+    data object ErrorView: FullScreenViewType()
 }

@@ -6,5 +6,7 @@ package com.gopay.domain.models
 data class RepositoryModel(
     val id: Int,
     val name: String?,
-    val description: String?
+    val description: String?,
+    val watcherCount: Int,
+    val forkCount: Int
 )

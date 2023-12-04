@@ -1,6 +1,7 @@
 package com.gopay.data.services
 
 import com.gopay.data.responses.RepositoryResponse
+import retrofit2.Response
 import retrofit2.http.GET
 
 /**
@@ -9,5 +10,5 @@ import retrofit2.http.GET
 interface HomeService {
 
     @GET("/ORG/repos")
-    fun getRepositoryList(): List<RepositoryResponse>
+    fun getRepositoryList(): Response<List<RepositoryResponse>>
 }

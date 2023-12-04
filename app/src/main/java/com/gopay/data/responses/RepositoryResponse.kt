@@ -29,11 +29,13 @@ class RepositoryResponse {
     @SerializedName("watchers")
     var watchers: Int? = null
 
-    fun map(): RepositoryModel {
+    fun convertToDataModel(): RepositoryModel {
         return RepositoryModel(
             id = this.id.orZero(),
             name = this.name,
-            description = this.description
+            description = this.description,
+            watcherCount = this.watchers.orZero(),
+            forkCount = this.forksCount.orZero()
         )
     }
 }
