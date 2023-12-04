@@ -1,27 +1,17 @@
 package com.gopay.dependencies
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.gopay.persistance.AppDatabase
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-
-@Module
-class StorageModule {
-    @Provides
-    @Singleton
-    fun providesSharedPreferences(context: Context): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(context)
+val storageModule = module {
+    single<SharedPreferences> {
+        PreferenceManager.getDefaultSharedPreferences(get())
     }
-
-    @Provides
-    @Singleton
-    fun providesRoomDB(context: Context): RoomDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, "app_db").build()
+    single<RoomDatabase> {
+        Room.databaseBuilder(get(), AppDatabase::class.java, "app_db").build()
     }
 }

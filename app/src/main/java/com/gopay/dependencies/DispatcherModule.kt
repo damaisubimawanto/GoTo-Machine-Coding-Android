@@ -2,15 +2,10 @@ package com.gopay.dependencies
 
 import com.gopay.dispatcher.CoroutineDispatcherProvider
 import com.gopay.dispatcher.RealCoroutineDispatcherProvider
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Module
-class DispatcherModule {
-    @Provides
-    @Singleton
-    fun providesCoroutineDispatcher(): CoroutineDispatcherProvider {
-        return RealCoroutineDispatcherProvider()
+val dispatcherModule = module {
+    single<CoroutineDispatcherProvider> {
+        RealCoroutineDispatcherProvider()
     }
 }

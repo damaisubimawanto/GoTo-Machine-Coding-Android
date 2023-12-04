@@ -2,23 +2,23 @@
 
 buildscript {
     ext {
-        compileSdk = 28
-        buildTools = '28.0.3'
-        minSdk = 21
-        targetSdk = 28
+        compileSdk = 34
+        buildTools = '34.0.0'
+        minSdk = 24
+        targetSdk = 34
 
         /*https://blog.jetbrains.com/kotlin/category/releases/*/
-        kotlinVersion = '1.4.0'
+        kotlinVersion = '1.9.21'
         /*https://github.com/Kotlin/kotlinx.coroutines/releases*/
-        coroutinesVersion = '1.3.9'
+        coroutinesVersion = '1.7.3'
         /*https://developer.android.com/jetpack/androidx/releases/appcompat*/
-        appCompatVersion = '1.2.0'
+        appCompatVersion = '1.6.1'
         /*https://developer.android.com/jetpack/androidx/releases/core*/
-        androidxCoreVersion = '1.3.1'
+        androidxCoreVersion = '1.12.0'
         /*https://developer.android.com/jetpack/androidx/releases/activity*/
-        androidxActivityVersion = '1.1.0'
+        androidxActivityVersion = '1.8.1'
         /*https://developer.android.com/jetpack/androidx/releases/fragment*/
-        androidxFragmentVersion = '1.2.5'
+        androidxFragmentVersion = '1.6.2'
         kotlinDep = [
                 gradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}",
                 stdlib      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
@@ -27,7 +27,7 @@ buildscript {
 
         androidDependencies = [
                 /*https://developer.android.com/studio/releases/gradle-plugin*/
-                gradlePlugin: "com.android.tools.build:gradle:3.5.0",
+                gradlePlugin: "com.android.tools.build:gradle:8.2.0",
                 /*https://dl.google.com/dl/android/maven2/index.html*/
                 appCompat   : "androidx.appcompat:appcompat:${appCompatVersion}",
                 androidXCore: "androidx.core:core:${androidxCoreVersion}",
@@ -35,15 +35,17 @@ buildscript {
                 fragmentKtx : "androidx.fragment:fragment-ktx:${androidxFragmentVersion}"
         ]
 
-        /*https://github.com/google/dagger#dagger*/
-        daggerVersion = '2.28.3'
-        daggerDep = [
-                core    : "com.google.dagger:dagger:${daggerVersion}",
-                compiler: "com.google.dagger:dagger-compiler:${daggerVersion}",
+        /*https://github.com/InsertKoinIO/koin*/
+        koin_version = '2.2.2'
+        koinDep = [
+                core        : "org.koin:koin-core:$koin_version",
+                android     : "org.koin:koin-android:$koin_version",
+                scope       : "org.koin:koin-android-scope:$koin_version",
+                viewmodel   : "org.koin:koin-android-viewmodel:$koin_version"
         ]
 
         /*https://dl.google.com/dl/android/maven2/index.html*/
-        archComponentsVersion = '2.1.0'
+        archComponentsVersion = '2.2.0'
         archComponents = [
                 components        : "androidx.lifecycle:lifecycle-extensions:${archComponentsVersion}",
                 componentsCompiler: "androidx.lifecycle:lifecycle-compiler:${archComponentsVersion}",
@@ -52,7 +54,7 @@ buildscript {
         ]
 
         /*https://developer.android.com/jetpack/androidx/releases/room*/
-        roomDbVersion = '2.2.5'
+        roomDbVersion = '2.6.1'
         roomDb = [
                 core    : "androidx.room:room-runtime:${roomDbVersion}",
                 compiler: "androidx.room:room-compiler:${roomDbVersion}",
@@ -61,14 +63,14 @@ buildscript {
         ]
 
         /*https://github.com/square/okhttp/blob/master/CHANGELOG.md*/
-        okhttpVersion = '4.2.0'
+        okhttpVersion = '4.12.0'
         /*https://github.com/square/retrofit/blob/master/CHANGELOG.md*/
-        retrofitVersion = '2.6.1'
+        retrofitVersion = '2.9.0'
         networking = [
                 okhttp      : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
                 okhttpLog   : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
                 /*https://github.com/google/gson/releases*/
-                gson        : "com.google.code.gson:gson:2.8.5",
+                gson        : "com.google.code.gson:gson:2.10.1",
                 retrofit    : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
                 retrofitRx  : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
                 retrofitGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
@@ -76,7 +78,7 @@ buildscript {
 
         rx = [
                 /*https://github.com/ReactiveX/RxJava/releases*/
-                java   : "io.reactivex.rxjava2:rxjava:2.2.12",
+                java   : "io.reactivex.rxjava2:rxjava:2.2.21",
                 /*https://github.com/ReactiveX/RxAndroid/releases*/
                 android: "io.reactivex.rxjava2:rxandroid:2.1.1",
                 /*https://github.com/ReactiveX/RxKotlin/releases*/
@@ -85,14 +87,14 @@ buildscript {
 
         ui = [
                 /*https://dl.google.com/dl/android/maven2/index.html*/
-                constraintLayout: 'androidx.constraintlayout:constraintlayout:1.1.3',
-                recyclerview    : 'androidx.recyclerview:recyclerview:1.0.0',
-                material        : 'com.google.android.material:material:1.0.0',
+                constraintLayout: 'androidx.constraintlayout:constraintlayout:2.1.4',
+                /*recyclerview    : 'androidx.recyclerview:recyclerview:1.0.0',*/
+                material        : 'com.google.android.material:material:1.10.0',
                 /*https://github.com/square/picasso#download*/
                 picasso         : "com.squareup.picasso:picasso:2.71828",
                 /*https://github.com/JakeWharton/picasso2-okhttp3-downloader#download*/
                 picassoOkHttp   : "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0",
-                lottie          : "com.airbnb.android:lottie:3.3.0"
+                lottie          : "com.airbnb.android:lottie:6.2.0"
         ]
 
         other = [
@@ -108,7 +110,9 @@ buildscript {
                 roboelectricMultidex: "org.robolectric:shadows-multidex:${roboelectricVersion}",
                 aacTesting          : "androidx.arch.core:core-testing:${archComponentsVersion}",
                 roomDb              : "androidx.room:room-testing:${roomDbVersion}",
-                coroutines          : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}"
+                coroutines          : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}",
+                jupiter_junit       : "org.junit.jupiter:junit-jupiter:5.9.3",
+                junit_vintage_engine: "org.junit.vintage:junit-vintage-engine:5.9.3"
         ]
 
     }

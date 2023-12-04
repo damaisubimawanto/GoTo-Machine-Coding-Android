@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion rootProject.compileSdk
+    namespace = "com.gopay"
+    compileSdk rootProject.compileSdk
     defaultConfig {
         applicationId "com.gopay"
         minSdkVersion rootProject.minSdk
@@ -12,6 +12,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner testing.junitRunner
+    }
+    buildFeatures {
+        buildConfig true
+        viewBinding true
     }
     buildTypes {
         debug {
@@ -27,12 +31,12 @@ android {
     //dynamicFeatures = [":{MODULE_NAME}"]
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -46,12 +50,14 @@ dependencies {
     //Android
     api androidDependencies.appCompat
     implementation androidDependencies.androidXCore
-    implementation androidDependencies.activityKtx
-    implementation androidDependencies.fragmentKtx
+    /*implementation androidDependencies.activityKtx
+    implementation androidDependencies.fragmentKtx*/
 
     //DI
-    api daggerDep.core
-    kapt daggerDep.compiler
+    implementation koinDep.core
+    implementation koinDep.android
+    implementation koinDep.scope
+    implementation koinDep.viewmodel
 
     //Arch components
     api archComponents.components
@@ -73,7 +79,7 @@ dependencies {
 
     //UI
     api ui.constraintLayout
-    api ui.recyclerview
+    /*api ui.recyclerview*/
     api ui.material
     api ui.picasso
     api ui.picassoOkHttp
@@ -83,5 +89,12 @@ dependencies {
     api rx.java
     api rx.android
     api rx.kotlin
+
+    testImplementation testing.junit
+    testImplementation testing.roboelectric
+    testImplementation testing.aacTesting
+    testImplementation testing.coroutines
+    testImplementation testing.jupiter_junit
+    testRuntimeOnly testing.junit_vintage_engine
 
 }

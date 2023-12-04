@@ -10,3 +10,5 @@ fun String?.isValid(): Boolean {
 fun Int.divide(divideBy: Double, decimals: Int = 2): String {
     return (this / divideBy).toBigDecimal().setScale(decimals, RoundingMode.UP).toPlainString()
 }
+
+fun Int?.orZero(): Int = this ?: 0
