@@ -5,7 +5,7 @@ package com.gopay.utils
  */
 object Constants {
 
-    const val AUTH_TOKEN = "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"
+    const val AUTH_TOKEN = "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"
 
     const val HEADER_NAME_ACCEPT = "Accept"
     const val HEADER_NAME_AUTHORIZATION = "Authorization"
