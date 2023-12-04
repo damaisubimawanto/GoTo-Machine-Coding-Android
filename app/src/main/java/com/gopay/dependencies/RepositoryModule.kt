@@ -10,7 +10,8 @@ import org.koin.dsl.module
 val repositoryModule = module {
     single<HomeRepository> {
         HomeRepositoryImpl(
-            homeService = get()
+            homeService = get(),
+            dispatcherProvider = get()
         )
     }
 }

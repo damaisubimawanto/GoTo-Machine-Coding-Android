@@ -19,7 +19,7 @@ class MainViewModel(
     private val getRepositoryListUseCase: GetRepositoryListUseCase
 ) : ViewModel() {
 
-    private val _repositoryListLiveData: MutableLiveData<List<RepositoryModel>> = MutableLiveData()
+    private val _repositoryListLiveData = MutableLiveData<List<RepositoryModel>>()
     val repositoryListLiveData: LiveData<List<RepositoryModel>> get() = _repositoryListLiveData
 
     private val _loadingLiveData = MutableLiveData(false)
