@@ -41,10 +41,12 @@ class RepositoryResponse {
     fun convertToDataModel(): RepositoryModel {
         return RepositoryModel(
             name = this.name,
+            author = this.author,
             description = this.description,
             stars = this.stars.orZero(),
             forks = this.forks.orZero(),
-            language = this.language
+            language = this.language,
+            avatar = this.avatar
         )
     }
 }

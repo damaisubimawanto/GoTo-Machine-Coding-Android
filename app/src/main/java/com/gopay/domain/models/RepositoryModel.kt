@@ -5,8 +5,10 @@ package com.gopay.domain.models
  */
 data class RepositoryModel(
     val name: String?,
+    val author: String?,
     val description: String?,
     val stars: Int,
     val forks: Int,
-    val language: String?
+    val language: String?,
+    val avatar: String?
 )

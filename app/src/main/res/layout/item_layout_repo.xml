@@ -13,14 +13,83 @@
         app:layout_constraintStart_toStartOf="@id/guideLeftPadding"
         tools:background="@color/colorPrimary" />
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <Space
+        android:id="@+id/spaceBetweenThumbnailAndInfo"
+        android:layout_width="@dimen/dimen_8_dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/ivThumbnail"
+        app:layout_constraintTop_toTopOf="@+id/ivThumbnail" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/spaceBetweenThumbnailAndInfo"
+        app:layout_constraintTop_toTopOf="@id/guideTopPadding"
+        tools:text="Author" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRepositoryName"
+        android:layout_width="@dimen/dimen_0_dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/ivThumbnail"
-        app:layout_constraintTop_toTopOf="@id/guideTopPadding" />
+        app:layout_constraintEnd_toEndOf="@+id/guideRightPadding"
+        app:layout_constraintStart_toEndOf="@+id/spaceBetweenThumbnailAndInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
+        tools:text="Repository Name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRepositoryDescription"
+        android:layout_width="@dimen/dimen_0_dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/guideRightPadding"
+        app:layout_constraintStart_toEndOf="@+id/spaceBetweenThumbnailAndInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepositoryName"
+        tools:text="Repository Description" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvStarCount"
+        app:layout_constraintStart_toEndOf="@+id/spaceBetweenThumbnailAndInfo"
+        app:layout_constraintTop_toTopOf="@+id/tvStarCount"
+        tools:text="Language" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStarCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/dimen_8_dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:drawableLeftCompat="@drawable/ic_star_24px"
+        app:layout_constraintStart_toEndOf="@+id/tvLanguage"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepositoryDescription"
+        tools:text="15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvForkCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/dimen_8_dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:drawableLeftCompat="@drawable/ic_lan_24px"
+        app:layout_constraintStart_toEndOf="@+id/tvStarCount"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepositoryDescription"
+        tools:text="15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideLeftPadding"

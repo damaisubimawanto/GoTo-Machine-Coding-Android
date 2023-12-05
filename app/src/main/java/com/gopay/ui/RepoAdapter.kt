@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gopay.databinding.ItemLayoutRepoBinding
 import com.gopay.domain.models.RepositoryModel
+import com.gopay.extensions.loadImage
 
 /**
  * Created by damai007 on 04/December/2023
@@ -25,7 +26,7 @@ class RepoAdapter : ListAdapter<RepositoryModel, RepoAdapter.ViewHolder>(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindData(data = getItem(position))
+        holder.bindData(data = currentList[position])
     }
 
     inner class ViewHolder(
@@ -33,7 +34,21 @@ class RepoAdapter : ListAdapter<RepositoryModel, RepoAdapter.ViewHolder>(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(data: RepositoryModel) {
-            binding.tvTitle.text = data.name
+            with(binding) {
+                ivThumbnail.loadImage(url = data.avatar)
+                tvAuthor.text = data.author
+                tvRepositoryName.text = data.name
+                tvRepositoryDescription.text = data.description
+                tvStarCount.text = "${data.stars}"
+                tvForkCount.text = "${data.forks}"
+
+                val languageText = if (data.language.isNullOrBlank()) {
+                    "-"
+                } else {
+                    data.language
+                }
+                tvLanguage.text = languageText
+            }
         }
     }
 }

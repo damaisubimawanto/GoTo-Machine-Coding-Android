@@ -29,6 +29,7 @@ class MainViewModel(
     val errorLiveData: LiveData<Event<Boolean>> get() = _errorLiveData
 
     private var repositoryListPool: MutableList<RepositoryModel> = mutableListOf()
+    var isReset = false
 
     fun getRepositories() {
         viewModelScope.launch(dispatcher.io) {
@@ -53,13 +54,15 @@ class MainViewModel(
     }
 
     fun getRepositoriesByWatcherFilter() {
-        repositoryListPool.sortedBy {
+        isReset = true
+        repositoryListPool.sortedByDescending {
             it.stars
         }.let(_repositoryListLiveData::postValue)
     }
 
     fun getRepositoresByForkFilter() {
-        repositoryListPool.sortedBy {
+        isReset = true
+        repositoryListPool.sortedByDescending {
             it.forks
         }.let(_repositoryListLiveData::postValue)
     }

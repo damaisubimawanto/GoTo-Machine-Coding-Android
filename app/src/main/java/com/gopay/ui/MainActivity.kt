@@ -64,6 +64,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeLiveData() {
         viewModel.repositoryListLiveData.observe(this) {
+            if (viewModel.isReset) {
+                viewModel.isReset = false
+                myAdapter.submitList(null)
+            }
             myAdapter.submitList(it)
         }
 
