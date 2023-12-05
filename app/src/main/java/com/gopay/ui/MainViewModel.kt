@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gopay.dispatcher.CoroutineDispatcherProvider
+import com.gopay.base.dispatcher.CoroutineDispatcherProvider
 import com.gopay.domain.models.RepositoryModel
 import com.gopay.domain.models.SortMenuType
-import com.gopay.network.Resource
-import com.gopay.usecases.GetRepositoryListUseCase
-import com.gopay.utils.Event
+import com.gopay.base.network.Resource
+import com.gopay.domain.usecases.GetRepositoryListUseCase
+import com.gopay.base.utils.Event
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

@@ -2,7 +2,7 @@ package com.gopay.data.responses
 
 import com.google.gson.annotations.SerializedName
 import com.gopay.domain.models.RepositoryModel
-import com.gopay.extensions.orZero
+import com.gopay.base.extensions.orZero
 
 /**
  * Created by damai007 on 04/December/2023

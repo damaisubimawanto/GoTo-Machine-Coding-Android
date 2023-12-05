@@ -1,12 +1,12 @@
 package com.gopay.domain.repositories
 
 import com.gopay.data.services.HomeService
-import com.gopay.dispatcher.CoroutineDispatcherProvider
+import com.gopay.base.dispatcher.CoroutineDispatcherProvider
 import com.gopay.domain.models.RepositoryModel
-import com.gopay.extensions.errorMessage
-import com.gopay.network.NetworkResource
-import com.gopay.network.Resource
-import com.gopay.utils.Constants.QUERY_SINCE_DAILY
+import com.gopay.base.extensions.errorMessage
+import com.gopay.base.network.NetworkResource
+import com.gopay.base.network.Resource
+import com.gopay.base.utils.Constants.QUERY_SINCE_DAILY
 import kotlinx.coroutines.flow.Flow
 
 /**

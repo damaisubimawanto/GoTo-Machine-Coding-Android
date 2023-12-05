@@ -1,4 +1,4 @@
-package com.gopay.extensions
+package com.gopay.base.extensions
 
 import retrofit2.Response
 

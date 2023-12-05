@@ -1,4 +1,4 @@
-package com.gopay.utils
+package com.gopay.base.utils
 
 /**
  * Created by damai007 on 05/December/2023

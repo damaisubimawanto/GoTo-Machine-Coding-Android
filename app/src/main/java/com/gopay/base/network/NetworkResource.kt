@@ -1,6 +1,6 @@
-package com.gopay.network
+package com.gopay.base.network
 
-import com.gopay.dispatcher.CoroutineDispatcherProvider
+import com.gopay.base.dispatcher.CoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

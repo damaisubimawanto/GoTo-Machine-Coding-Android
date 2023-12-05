@@ -1,7 +1,7 @@
 package com.gopay.domain.repositories
 
 import com.gopay.domain.models.RepositoryModel
-import com.gopay.network.Resource
+import com.gopay.base.network.Resource
 import kotlinx.coroutines.flow.Flow
 
 /**

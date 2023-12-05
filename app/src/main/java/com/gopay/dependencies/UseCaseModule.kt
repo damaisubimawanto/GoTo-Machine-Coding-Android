@@ -1,6 +1,6 @@
 package com.gopay.dependencies
 
-import com.gopay.usecases.GetRepositoryListUseCase
+import com.gopay.domain.usecases.GetRepositoryListUseCase
 import org.koin.dsl.module
 
 /**

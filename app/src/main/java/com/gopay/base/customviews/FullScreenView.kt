@@ -1,15 +1,15 @@
-package com.gopay.customviews
+package com.gopay.base.customviews
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
-import com.gopay.customviews.FullScreenViewType.LoadingView
-import com.gopay.customviews.FullScreenViewType.ErrorView
+import com.gopay.base.customviews.FullScreenViewType.LoadingView
+import com.gopay.base.customviews.FullScreenViewType.ErrorView
 import com.gopay.databinding.FullScreenViewBinding
-import com.gopay.extensions.gone
-import com.gopay.extensions.isVisible
+import com.gopay.base.extensions.gone
+import com.gopay.base.extensions.isVisible
 
 class FullScreenView @JvmOverloads constructor(
     context: Context,

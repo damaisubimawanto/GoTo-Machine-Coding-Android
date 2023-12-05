@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.core.view.isVisible
 import com.gopay.R
-import com.gopay.customviews.FullScreenViewType
+import com.gopay.base.customviews.FullScreenViewType
 import com.gopay.databinding.ActivityMainBinding
 import com.gopay.domain.models.SortMenuType
 import org.koin.android.ext.android.inject

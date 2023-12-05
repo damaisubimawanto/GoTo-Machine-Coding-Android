@@ -1,4 +1,4 @@
-package com.gopay.network
+package com.gopay.base.network
 
 /**
  * Created by damai007 on 04/December/2023

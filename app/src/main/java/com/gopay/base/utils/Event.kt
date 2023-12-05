@@ -1,4 +1,4 @@
-package com.gopay.utils
+package com.gopay.base.utils
 
 import androidx.lifecycle.Observer
 

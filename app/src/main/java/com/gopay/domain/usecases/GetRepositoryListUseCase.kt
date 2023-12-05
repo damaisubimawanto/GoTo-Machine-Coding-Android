@@ -1,8 +1,8 @@
-package com.gopay.usecases
+package com.gopay.domain.usecases
 
 import com.gopay.domain.models.RepositoryModel
 import com.gopay.domain.repositories.HomeRepository
-import com.gopay.network.Resource
+import com.gopay.base.network.Resource
 import kotlinx.coroutines.flow.Flow
 
 /**

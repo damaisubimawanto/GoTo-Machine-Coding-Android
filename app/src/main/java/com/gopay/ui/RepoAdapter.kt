@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gopay.databinding.ItemLayoutRepoBinding
 import com.gopay.domain.models.RepositoryModel
-import com.gopay.extensions.loadImage
+import com.gopay.base.extensions.loadImage
 
 /**
  * Created by damai007 on 04/December/2023

@@ -1,4 +1,4 @@
-package com.gopay.dispatcher
+package com.gopay.base.dispatcher
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
