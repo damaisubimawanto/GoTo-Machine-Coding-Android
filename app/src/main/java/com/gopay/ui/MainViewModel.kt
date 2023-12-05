@@ -71,14 +71,12 @@ class MainViewModel(
         repositoryListPool.sortedByDescending {
             it.forks
         }.let(_repositoryListLiveData::postValue)
-
         setSortMenu(type = SortMenuType.SortByFork)
     }
 
     fun getDefaultRepositories() {
         isReset = true
         repositoryListPool.let(_repositoryListLiveData::postValue)
-
         setSortMenu(type = SortMenuType.ClearSort)
     }
 
