@@ -8,14 +8,17 @@ import com.gopay.extensions.orZero
  * Created by damai007 on 04/December/2023
  */
 class RepositoryResponse {
-    @SerializedName("id")
-    var id: Int? = null
+    @SerializedName("author")
+    var author: String? = null
 
     @SerializedName("name")
     var name: String? = null
 
-    @SerializedName("owner")
-    var owner: OwnerResponse? = null
+    @SerializedName("avatar")
+    var avatar: String? = null
+
+    @SerializedName("url")
+    var url: String? = null
 
     @SerializedName("description")
     var description: String? = null
@@ -23,27 +26,25 @@ class RepositoryResponse {
     @SerializedName("language")
     var language: String? = null
 
-    @SerializedName("forks_count")
-    var forksCount: Int? = null
+    @SerializedName("languageColor")
+    var languageColor: String? = null
 
-    @SerializedName("watchers")
-    var watchers: Int? = null
+    @SerializedName("stars")
+    var stars: Int? = null
+
+    @SerializedName("forks")
+    var forks: Int? = null
+
+    @SerializedName("currentPeriodStars")
+    var currentPeriodStars: Int? = null
 
     fun convertToDataModel(): RepositoryModel {
         return RepositoryModel(
-            id = this.id.orZero(),
             name = this.name,
             description = this.description,
-            watcherCount = this.watchers.orZero(),
-            forkCount = this.forksCount.orZero()
+            stars = this.stars.orZero(),
+            forks = this.forks.orZero(),
+            language = this.language
         )
     }
-}
-
-class OwnerResponse {
-    @SerializedName("id")
-    var id: Int? = null
-
-    @SerializedName("avatar_url")
-    var avatarUrl: String? = null
 }

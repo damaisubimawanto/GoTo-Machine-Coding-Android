@@ -9,7 +9,7 @@ import com.gopay.domain.models.RepositoryModel
 object RepoComparator : DiffUtil.ItemCallback<RepositoryModel>() {
 
     override fun areItemsTheSame(oldItem: RepositoryModel, newItem: RepositoryModel): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.name == newItem.name
     }
 
     override fun areContentsTheSame(oldItem: RepositoryModel, newItem: RepositoryModel): Boolean {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.view.isVisible
 import com.gopay.R
 import com.gopay.customviews.FullScreenViewType
 import com.gopay.databinding.ActivityMainBinding
@@ -53,6 +54,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
+        setSupportActionBar(binding.toolbar)
+
         with(binding.rvRepos) {
             myAdapter = RepoAdapter()
             adapter = myAdapter
@@ -77,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                     type = FullScreenViewType.ErrorView,
                     isShowing = isError
                 )
+                binding.rvRepos.isVisible = !isError
             }
         }
     }

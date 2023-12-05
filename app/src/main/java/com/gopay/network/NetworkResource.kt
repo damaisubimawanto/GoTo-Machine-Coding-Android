@@ -23,19 +23,23 @@ abstract class NetworkResource<T>(
             }
             when (remoteResponse) {
                 is Resource.Success -> {
-                    remoteResponse.data?.let { data ->
+                    remoteResponse.data.first?.let { data ->
                         saveLocal(data = data)
+                        emit(Resource.Success(data = data))
+                    } ?: run {
+                        emit(Resource.Error(errorMessage = remoteResponse.data.second))
                     }
                 }
-                is Resource.Error -> Unit
+                is Resource.Error -> {
+                    emit(remoteResponse)
+                }
             }
-            emit(remoteResponse)
         } else {
             emit(Resource.Success(data = localCache))
         }
     }
 
-    abstract suspend fun remoteFetch(): T
+    abstract suspend fun remoteFetch(): Pair<T?, String?>
 
     open suspend fun localFetch(): T? = null
 

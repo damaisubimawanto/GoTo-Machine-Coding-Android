@@ -3,8 +3,10 @@ package com.gopay.domain.repositories
 import com.gopay.data.services.HomeService
 import com.gopay.dispatcher.CoroutineDispatcherProvider
 import com.gopay.domain.models.RepositoryModel
+import com.gopay.extensions.errorMessage
 import com.gopay.network.NetworkResource
 import com.gopay.network.Resource
+import com.gopay.utils.Constants.QUERY_SINCE_DAILY
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -19,13 +21,19 @@ class HomeRepositoryImpl(
         return object : NetworkResource<List<RepositoryModel>>(
             dispatcherProvider = dispatcherProvider
         ) {
-            override suspend fun remoteFetch(): List<RepositoryModel> {
-                val response = homeService.getRepositoryList()
+            override suspend fun remoteFetch(): Pair<List<RepositoryModel>?, String?> {
+                val response = homeService.getRepositoryList(
+                    since = QUERY_SINCE_DAILY
+                )
                 return if (response.isSuccessful) {
-                    response.body()?.map {
+                    val responseModel = response.body()?.map {
                         it.convertToDataModel()
                     } ?: listOf()
-                } else listOf()
+                    Pair(responseModel, null)
+                } else {
+                    /* If response is not successfull, then give the error message. */
+                    Pair(null, response.errorMessage())
+                }
             }
 
             override suspend fun localFetch(): List<RepositoryModel>? {

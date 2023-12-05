@@ -19,12 +19,12 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "API_BASE", '"https://api.github.com"'
+            buildConfigField "String", "API_BASE", '"https://api.gitterapp.com"'
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_BASE", '"https://api.github.com"'
+            buildConfigField "String", "API_BASE", '"https://api.gitterapp.com"'
         }
     }
 
@@ -56,8 +56,6 @@ dependencies {
     //DI
     implementation koinDep.core
     implementation koinDep.android
-    implementation koinDep.scope
-    implementation koinDep.viewmodel
 
     //Arch components
     api archComponents.components

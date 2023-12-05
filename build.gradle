@@ -36,12 +36,10 @@ buildscript {
         ]
 
         /*https://github.com/InsertKoinIO/koin*/
-        koin_version = '2.2.2'
+        koin_version = '3.5.0'
         koinDep = [
-                core        : "org.koin:koin-core:$koin_version",
-                android     : "org.koin:koin-android:$koin_version",
-                scope       : "org.koin:koin-android-scope:$koin_version",
-                viewmodel   : "org.koin:koin-android-viewmodel:$koin_version"
+                core        : "io.insert-koin:koin-core:$koin_version",
+                android     : "io.insert-koin:koin-android:$koin_version"
         ]
 
         /*https://dl.google.com/dl/android/maven2/index.html*/
@@ -119,8 +117,7 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
-
+        mavenCentral()
     }
     dependencies {
         classpath androidDependencies.gradlePlugin
@@ -131,8 +128,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
-
+        mavenCentral()
     }
 }
 

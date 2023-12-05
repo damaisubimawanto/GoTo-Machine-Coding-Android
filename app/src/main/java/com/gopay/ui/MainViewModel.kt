@@ -37,7 +37,7 @@ class MainViewModel(
                 _loadingLiveData.postValue(false)
                 when (resource) {
                     is Resource.Success -> {
-                        resource.data?.let {
+                        resource.data.let {
                             repositoryListPool.clear()
                             repositoryListPool.addAll(it)
                             _repositoryListLiveData.postValue(it)
@@ -54,13 +54,13 @@ class MainViewModel(
 
     fun getRepositoriesByWatcherFilter() {
         repositoryListPool.sortedBy {
-            it.watcherCount
+            it.stars
         }.let(_repositoryListLiveData::postValue)
     }
 
     fun getRepositoresByForkFilter() {
         repositoryListPool.sortedBy {
-            it.forkCount
+            it.forks
         }.let(_repositoryListLiveData::postValue)
     }
 }
