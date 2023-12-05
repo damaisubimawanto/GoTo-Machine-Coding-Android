@@ -6,4 +6,8 @@
     <item
         android:id="@+id/sortByFork"
         android:title="@string/menu_sorted_by_forks" />
+    <item
+        android:id="@+id/clearSort"
+        android:title="@string/menu_clear_sort"
+        android:visible="false" />
 </menu>

@@ -6,5 +6,6 @@
 
     <string name="menu_sorted_by_watcher">Sort by Watchers</string>
     <string name="menu_sorted_by_forks">Sort by Forks</string>
+    <string name="menu_clear_sort">Clear Sort</string>
 
 </resources>
